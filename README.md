@@ -8,7 +8,8 @@ Some of its attractive qualities are:
 * Vim key bindings as well as default bindings for quick navigation
 * Deck builder
 * Configurable Timer for each card and the whole game
-* Minor Animations  
+* Minor Animations
+
 Overall, Gambit aims to be a lightweight and highly functional learning utility
 with minor cosmetics.
 
