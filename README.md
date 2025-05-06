@@ -6,7 +6,6 @@ Some of its attractive qualities are:
 * Performance Metrics
 * Profiles to remember session settings
 * Vim key bindings as well as default bindings for extremely quick navigation
-* Deck builder
 * Configurable Timer for each card and the whole game
 * Minor Animations
 
