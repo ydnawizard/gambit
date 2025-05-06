@@ -3,6 +3,7 @@ Gambit is a terminal-based flash card utility written in C with a simple ncurses
 Some of its attractive qualities are:
 * You can use multiple decks simultaneously
 * Performance Metrics
+* Multiple choice support
 * Profiles to remember session settings
 * Vim key bindings as well as default bindings for extremely quick navigation
 * Configurable Timer for each card and the whole game
