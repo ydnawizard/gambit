@@ -1,7 +1,6 @@
 # GAMBIT
-Gambit is a terminal-based flash card utility written in C.  
+Gambit is a terminal-based flash card utility written in C with a simple ncurses gui.  
 Some of its attractive qualities are:
-* Self-contained (no dependencies)
 * You can use multiple decks simultaneously
 * Performance Metrics
 * Profiles to remember session settings
