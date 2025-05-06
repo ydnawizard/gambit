@@ -14,7 +14,7 @@ void main_menu()
 	struct banner banner1={"GAMBZTYY","graffiti","default","oscillate"};
 	text=style(&banner1);
 	spelled=spell(text,&banner1);
-	WINDOW* title_window=newwin(15,100,.1*y_max,.333*x_max);
+	WINDOW* title_window=newwin(12,100,.1*y_max,.333*x_max);
 	WINDOW* menu_window=newwin(50,50,.35*y_max,.333*x_max);
 	mvwprintw(title_window,0,0,"%s\n",spelled);
 	wrefresh(title_window);
@@ -24,12 +24,39 @@ void main_menu()
 	{
 		if(loop_state > 50000000)
 		{
+			if(kbhit())
+			{
+				key=wgetch(menu_window);
+				switch(key)
+				{
+					case KEY_UP:
+						if(highlight==0)
+						{
+							break;
+						}
+						else
+						{
+							highlight--;
+							break;
+						}
+					case KEY_DOWN:
+						if(highlight==5)
+						{
+							break;
+						}
+						else
+						{
+							highlight++;
+							break;
+						}
+				}
+			}
 			wclear(title_window);
 			spelled=oscillate(spelled,&banner1);
 			mvwprintw(title_window,0,0,"%s\n",spelled);
 			for(int i=0;i<6;i++)
 			{
-				if(i==0)
+				if(i==highlight)
 				{
 					wattron(menu_window,A_REVERSE);
 				}
