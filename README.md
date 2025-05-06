@@ -6,7 +6,7 @@ Some of its attractive qualities are:
 * Multiple choice support
 * Profiles to remember session settings
 * Vim key bindings as well as default bindings for extremely quick navigation
-* Configurable Timer for each card and the whole game
+* Configurable card and game timer
 * Minor Animations
 
 Overall, Gambit aims to be a lightweight and highly functional learning utility
