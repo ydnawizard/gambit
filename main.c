@@ -23,4 +23,18 @@ int main()
 	free(deck.characters);
 	free(deck.strings);
 	free(deck.lines);
+	directory  decks;
+	read_directory_contents(&decks,"/home/andy/proj/c/gambit/decks/");
+	for(int i=0;i<decks.file_count;i++)
+	{
+		printf("%s\n",decks.file_names[i]);
+		free(decks.file_names[i]);
+	}
+	for(int i=0;i<decks.sub_directory_count;i++)
+	{
+		printf("%s\n",decks.sub_directory_names[i]);
+		free(decks.sub_directory_names[i]);
+	}
+	free(decks.sub_directory_names);
+	free(decks.file_names);
 }

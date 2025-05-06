@@ -6,11 +6,6 @@
 #include <stdbool.h>
 #include <time.h>
 
-//sqlite
-#include <sqlite3.h>
-
-//ncurses
-#include <curses.h>
-
 //Read File
 #include "read/read_txt.c"
+#include "read/read_directory.c"

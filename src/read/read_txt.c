@@ -1,6 +1,7 @@
 
 //Define file contents structure for organized storage
-typedef struct text_file_contents{
+typedef struct text_file_contents
+{
 	int character_count;
 	int string_count;
 	int line_count;
@@ -145,6 +146,7 @@ void read_strings_to_text_file_contents_pointer(
 	}
 }
 
+//Line handler
 void read_lines_to_text_file_contents_pointer(
 		txt* text_file_contents_pointer,
 		int* line_index,
@@ -152,6 +154,7 @@ void read_lines_to_text_file_contents_pointer(
 		char character
 		)
 {
+	//If first char first line
 	if((*line_character_index) == 0 && (*line_index) == 0)
 	{
 		if(character != ' ' && character != '\n')
@@ -168,7 +171,7 @@ void read_lines_to_text_file_contents_pointer(
 			(*line_character_index)+=1;
 		}
 	}
-	//first char n str
+	//first char n line
 	else if((*line_character_index) == 0 && (*line_index) != 0)
 	{
 		if(character != '\n')
@@ -258,6 +261,7 @@ void read_text_file_contents(txt* text_file_contents_pointer,char* file_path)
 				);
 		character_index+=1;
 	}
+	fclose(file_pointer);
 }
 
 
