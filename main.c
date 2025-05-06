@@ -4,9 +4,11 @@
 int main()
 {
 	txt deck;
-	initscr();
+	SCREEN* s = newterm(NULL,stdin,stdout);
 	noecho();
 	cbreak();
 	curs_set(0);
+	keypad(stdscr,TRUE);
 	main_menu();
+	endwin();
 }

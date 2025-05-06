@@ -11,6 +11,7 @@
 #include <ncurses.h>
 #include <curses.h>
 
+//Termitex
 #include "modules/gui/termitex/termitex3.c"
 #include "modules/gui/termitex/termitex.c"
 
@@ -22,9 +23,13 @@
 #include "objects/menu_object.c"
 #include "objects/game_object.c"
 
+//Misc
+#include "misc/input_no_wait.c"
+
 //Read File
 #include "read/read_txt.c"
 #include "read/read_directory.c"
+
 
 //GUI
 #include "modules/gui/main_menu.c"

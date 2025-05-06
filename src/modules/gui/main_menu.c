@@ -15,16 +15,32 @@ void main_menu()
 	text=style(&banner1);
 	spelled=spell(text,&banner1);
 	WINDOW* title_window=newwin(15,100,.1*y_max,.333*x_max);
-	WINDOW* menu_window=newwin(50,20,.35*y_max,.333*x_max);
-	mvwprintw(title_window,1,1,"%s\n",spelled);
+	WINDOW* menu_window=newwin(50,50,.35*y_max,.333*x_max);
+	mvwprintw(title_window,0,0,"%s\n",spelled);
 	wrefresh(title_window);
-	while(loop_state == 1)
+	keypad(menu_window,true);
+	nodelay(stdscr,TRUE);
+	while(loop_state > 0)
 	{
-		wclear(title_window);
-		spelled=oscillate(spelled,&banner1);
-		mvwprintw(title_window,0,0,"%s\n",spelled);
-		wrefresh(title_window);
-		usleep(25000);
+		if(loop_state > 50000000)
+		{
+			wclear(title_window);
+			spelled=oscillate(spelled,&banner1);
+			mvwprintw(title_window,0,0,"%s\n",spelled);
+			for(int i=0;i<6;i++)
+			{
+				if(i==0)
+				{
+					wattron(menu_window,A_REVERSE);
+				}
+				mvwprintw(menu_window,i+1,25,mainMenu[i]);
+				wattroff(menu_window,A_REVERSE);
+				wrefresh(menu_window);
+			}
+			wrefresh(title_window);
+			loop_state=1;
+		}
+		loop_state+=1;
 	}
 
 }
