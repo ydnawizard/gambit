@@ -79,18 +79,14 @@ void read_directory_contents(
 					[sub_directory_count]
 					=malloc(strlen(directory_clean_pointer->d_name)
 							*sizeof(char));
-				for(int i=0;i<strlen(directory_clean_pointer->d_name);i++)
-				{
-					directory_contents_pointer->sub_directory_names
-						[sub_directory_count][i]
-						=directory_clean_pointer->d_name
-							[i];
-				}
+				strcpy(directory_contents_pointer->sub_directory_names
+						[sub_directory_count],
+						directory_clean_pointer->d_name);
 				sub_directory_count+=1;
 			}
 			else
 			{
-				void* tmp
+				char** tmp
 					=realloc(directory_contents_pointer->sub_directory_names,
 							(sub_directory_count+1)*sizeof(char*));
 				if(tmp != NULL)
@@ -101,19 +97,15 @@ void read_directory_contents(
 						[sub_directory_count]
 						=malloc(strlen(directory_clean_pointer->d_name)
 								*sizeof(char));
-					for(int i=0;i<strlen(directory_clean_pointer->d_name);i++)
-					{
-						directory_contents_pointer->sub_directory_names
-							[sub_directory_count][i]
-							=directory_clean_pointer->d_name
-								[i];
-					}
+					strcpy(directory_contents_pointer->sub_directory_names
+							[sub_directory_count],
+							directory_clean_pointer->d_name);
 					sub_directory_count+=1;
 				}
 			}
 		}
 	}
-	directory_contents_pointer->file_count = sub_directory_count;
+	directory_contents_pointer->sub_directory_count = sub_directory_count;
 	directory_contents_pointer->file_count = file_count;
 	closedir(directory_raw_pointer);
 	free(directory_clean_pointer);
