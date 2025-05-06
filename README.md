@@ -4,7 +4,7 @@ Some of its attractive qualities are:
 * You can use multiple decks simultaneously
 * Performance Metrics
 * Multiple choice support
-* Profiles to remember session settings
+* Save/Load session settings to avoid repetitive configuring
 * Vim key bindings as well as default bindings for extremely quick navigation
 * Configurable card and game timer
 * Minor Animations
