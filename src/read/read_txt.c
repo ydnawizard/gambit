@@ -64,8 +64,8 @@ void read_character_to_text_file_contents_pointer(
 //String handling
 void read_strings_to_text_file_contents_pointer(
 		txt* text_file_contents_pointer,
-		int *string_index,
-		int *string_character_index,
+		int* string_index,
+		int* string_character_index,
 		char character
 		)
 {
@@ -145,7 +145,87 @@ void read_strings_to_text_file_contents_pointer(
 	}
 }
 
-
+void read_lines_to_text_file_contents_pointer(
+		txt* text_file_contents_pointer,
+		int* line_index,
+		int* line_character_index,
+		char character
+		)
+{
+	if((*line_character_index) == 0 && (*line_index) == 0)
+	{
+		if(character != ' ' && character != '\n')
+		{
+			text_file_contents_pointer->lines
+				=malloc(sizeof(char*));
+			text_file_contents_pointer->lines
+				[0]
+				=malloc(sizeof(char));
+			text_file_contents_pointer->lines
+				[0][0]
+				=character;
+			text_file_contents_pointer->line_count=0;
+			(*line_character_index)+=1;
+		}
+	}
+	//first char n str
+	else if((*line_character_index) == 0 && (*line_index) != 0)
+	{
+		if(character != '\n')
+		{
+			void* tmp=realloc(text_file_contents_pointer->lines,
+						((*line_index)+1)*sizeof(char*));
+			if(tmp != NULL)
+			{
+				text_file_contents_pointer->lines=tmp;
+				text_file_contents_pointer->lines
+					[(*line_index)]
+					=malloc(sizeof(char));
+				text_file_contents_pointer->lines
+					[(*line_index)][(*line_character_index)]
+					=character;
+				(*line_character_index)+=1;
+			}
+		}
+	}
+	else
+	{
+		if(character != '\n')
+		{
+			void* tmp=realloc(text_file_contents_pointer->lines
+						[(*line_index)],
+						((*line_character_index)+1)*sizeof(char));
+			if(tmp != NULL)
+			{
+				text_file_contents_pointer->lines
+					[(*line_index)]
+					=tmp;
+				text_file_contents_pointer->lines
+					[(*line_index)][(*line_character_index)]
+					=character;
+				(*line_character_index)+=1;
+			}
+		}
+		else
+		{
+			void* tmp=realloc(text_file_contents_pointer->lines
+						[(*line_index)],
+						((*line_character_index)+1)*sizeof(char));
+			if(tmp != NULL)
+			{
+				text_file_contents_pointer->lines
+					[(*line_index)]
+					=tmp;
+				text_file_contents_pointer->lines
+					[(*line_index)][(*line_character_index)]
+					='\0';
+				text_file_contents_pointer->line_count+=1;
+				(*line_index)+=1;
+				(*line_character_index)=0;
+			}
+		}
+	}
+}
 
 //main function
 void read_text_file_contents(txt* text_file_contents_pointer,char* file_path)
@@ -153,7 +233,9 @@ void read_text_file_contents(txt* text_file_contents_pointer,char* file_path)
 	char character;
 	int character_index=0,
 	    string_index=0,
-	    string_character_index=0;
+	    string_character_index=0,
+	    line_index=0,
+	    line_character_index=0;
 	FILE* file_pointer = fopen(file_path,"read");
 	while((character = fgetc(file_pointer))!=EOF)
 	{
@@ -166,6 +248,12 @@ void read_text_file_contents(txt* text_file_contents_pointer,char* file_path)
 				&(*text_file_contents_pointer),
 				&string_index,
 				&string_character_index,
+				character
+				);
+		read_lines_to_text_file_contents_pointer(
+				&(*text_file_contents_pointer),
+				&line_index,
+				&line_character_index,
 				character
 				);
 		character_index+=1;
