@@ -1,5 +1,5 @@
 
-typdef struct card
+typedef struct card
 {
 	int id;
 	int type;
