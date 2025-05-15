@@ -1,10 +1,11 @@
 
-typedef struct menu
+typedef struct mnu
 {
-	profile* profile;
-	int menu_type;
-	int menu_id;
-	struct banner _title_;
-}menu;
+	int state;
+	int mode;
+	char* style;
+	struct banner* banner;
+	char* banner_text;
+}mnu;
 
 
