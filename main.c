@@ -16,22 +16,22 @@ int main()
 	text=style(&banner1);
 	//TERMITEX
 	//init menu state
-	mnu menu;
-	menu.state=1;
-	menu.banner=&banner1;
-	menu.banner_text=spell(text,&banner1);
+	menu menu_pointer;
+	menu_pointer.state=1;
+	menu_pointer.banner=&banner1;
+	menu_pointer.banner_text=spell(text,&banner1);
 	//init game settings
-	game_set game_settings;
+	game_settings game_settings_pointer;
 	//menu loop:
-	while(menu.state > 0)
+	while(menu_pointer.state > 0)
 	{
-		if(menu.state == 1)
+		if(menu_pointer.state == 1)
 		{
-			main_menu(&menu);
+			main_menu(&menu_pointer);
 		}
-		else if(menu.state == 11)
+		else if(menu_pointer.state == 11)
 		{
-		//	pregame_menu.c(&menu,&game_settings);
+			pregame_menu(&menu_pointer,&game_settings_pointer);
 		}
 	}
 	endwin();

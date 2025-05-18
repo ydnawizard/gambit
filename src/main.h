@@ -24,12 +24,12 @@ const int title_window_x = 100,
 #include "gui/termitex/termitex.c"
 
 //Objects
-#include "objects/card_object.c"
-#include "objects/deck_object.c"
-#include "objects/timer_object.c"
-#include "objects/game_settings_object.c"
-#include "objects/menu_object.c"
-#include "objects/game_object.c"
+#include "structs/card_struct.c"
+#include "structs/deck_struct.c"
+#include "structs/timer_struct.c"
+#include "structs/game_settings_struct.c"
+#include "structs/menu_struct.c"
+#include "structs/game_struct.c"
 
 //Misc
 #include "misc/input_no_wait.c"

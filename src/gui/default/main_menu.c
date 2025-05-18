@@ -1,7 +1,7 @@
 char* main_menu_options[6]={"Play 󰋇","Presets","Client Settings","Performance",
 	"Info","Quit"};
 
-void main_menu(mnu* menu)
+void main_menu(menu* menu_pointer)
 {
 	//INIT\\
 	//VARS
@@ -14,7 +14,7 @@ void main_menu(mnu* menu)
 	//CURSES
 	WINDOW* title_window=newwin(title_window_y,title_window_x,.1*y_max,.333*x_max);
 	WINDOW* menu_window=newwin(menu_window_x,menu_window_y,.35*y_max,.333*x_max);
-	mvwprintw(title_window,0,0,"%ls\n",(*menu).banner_text);
+	mvwprintw(title_window,0,0,"%ls\n",(*menu_pointer).banner_text);
 	wrefresh(title_window);
 	keypad(menu_window,true);
 	nodelay(stdscr,TRUE);
@@ -56,24 +56,24 @@ void main_menu(mnu* menu)
 					case KEY_RIGHT:
 					case 'l':
 						{
-							if(highlight == 1)
+							if(highlight == 0)
 							{
 								wclear(menu_window);
 								wclear(title_window);
-								(*menu).state=11;
+								(*menu_pointer).state=11;
+								return;
 							}
 						}
 					case 'q':
 						{
-							exit(0);
 						}
 				}
 			}
 			//Re-draw Screen
 			wclear(title_window);
-			(*menu).banner_text=oscillate((*menu).banner_text,(*menu).banner);
+			(*menu_pointer).banner_text=oscillate((*menu_pointer).banner_text,(*menu_pointer).banner);
 			wattron(title_window,COLOR_PAIR(1));
-			mvwprintw(title_window,0,0,"%s\n",(*menu).banner_text);
+			mvwprintw(title_window,0,0,"%s\n",(*menu_pointer).banner_text);
 			wattroff(title_window,COLOR_PAIR(1));
 			wrefresh(title_window);
 			for(int i=0;i<6;i++)
